@@ -1,22 +1,33 @@
+export type DataType = "auto" | "number" | "string" | "date";
+
 export interface ChartData {
   features: string[];
   records: (string | number)[][];
 }
 
 export interface GraphSettings {
-  chartType: string;
   xAxisFeature: string;
   yAxisFeatures: string[];
+  chartType: "bar" | "line" | "pie" | "scatter" | "area" | "boxplot";
   xAxisLabel: string;
   yAxisLabel: string;
-  legendPosition: string;
+  legendPosition: "top" | "bottom" | "left" | "right";
   colorPalette: string[];
   zoom: number;
-  filterFeature: string;
-  filterOperator: string;
-  filterValue: number | null;
-  sortFeature: string;
-  sortOrder: "asc" | "desc";
+  filterFeature?: string;
+  filterValue?: number | null;
+  filterOperator?: ">" | "<" | "=" | ">=" | "<=";
+  sortFeature?: string;
+  sortOrder?: "asc" | "desc";
+  dataTypes: { [key: string]: DataType };
+  filters: Filter[];
+}
+
+export interface Filter {
+  feature: string;
+  operator: string;
+  value: string | number;
+  type: "and" | "or";
 }
 
 export interface SavedSettings extends GraphSettings {
