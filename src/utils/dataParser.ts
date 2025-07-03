@@ -1,4 +1,9 @@
 import * as XLSX from "xlsx";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination } from "swiper/modules";
 
 export interface ParsedData {
   features: string[];
